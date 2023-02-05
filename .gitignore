@@ -1,8 +1,6 @@
-nbproject/
-build/
-dist/
-*.class
-*.sw[op]
-*~
-*.jar
-*.log
+/nbproject/private/
+/build/
+/dist/
+/target/
+dependency-check-report.html
+UserPreferences.properties
