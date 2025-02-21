@@ -2,20 +2,20 @@
 # devnull@libcrack.so
 # Mon Oct  3 06:35:01 CEST 2016
 
-jarfile=ReportCompiler.jar
 scriptpath="$(realpath "$0")"
 workdir="$(dirname "${scriptpath}")"
+jarfile="${workdir}/target/ReportCompiler.jar"
 
-test -z "$1" || workdir="$1"
-test -d "$workdir" ||  {
-    echo "ERROR: cannot access $workdir"
-    exit 1
+test -f "${jarfile}" ||  {
+    printf ">> \e[31mERROR:\e[0m Cannot find ${jarfile}\n"
+    printf ">> Moving into ${workdir}\n"
+    cd "${workdir}"
+    printf ">> Compiling ${jarfile}\n"
+    mvn package || exit ${?}
+    cd "${OLDPWD}"
 }
 
-echo ">> Entering $workdir"
-cd "$workdir" || exit 1
+printf ">> Launching \e[1m${jarfile}\e[0m\n"
+exec java -jar "${jarfile}"
 
-echo ">> Launching $jarfile"
-java -jar "$jarfile" &
-
-exit $?
+exit ${?}
