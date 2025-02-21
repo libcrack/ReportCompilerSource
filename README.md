@@ -9,13 +9,13 @@ ReportCompiler is a Java GUI application to import vulnerabilities from tools su
 Use ant to build the jar file and the documentation:
 
 ```sh
-$ ant -f build.xml
+mvn package
 ```
 
 ### Usage
 
 ```sh
-$ java -jar dist/ReportCompiler.jar
+java -jar target/ReportCompiler.jar
 ```
 
 ### GTK Look & Feel
@@ -23,7 +23,7 @@ $ java -jar dist/ReportCompiler.jar
 On GNU/Linux systems, the following error may appear:
 
 ```sh
-$ java -jar dist/ReportCompiler.jar
+$ java -jar target/ReportCompiler.jar
 Exception in thread "main" java.lang.Error: Cannot load com.sun.java.swing.plaf.gtk.GTKLookAndFeel
     at javax.swing.UIManager.initializeDefaultLAF(UIManager.java:1351)
     at javax.swing.UIManager.initialize(UIManager.java:1459)
@@ -35,7 +35,7 @@ Exception in thread "main" java.lang.Error: Cannot load com.sun.java.swing.plaf.
 To fix it, just specify a different look and feel as argument to Java:
 
 ```sh
-$ java -Xms128M -Xmx512M -jar dist/ReportCompiler.jar -Dswing.defaultlaf=com.jtattoo.plaf.aero.AeroLookAndFeel
+$ java -Xms128M -Xmx512M -jar target/ReportCompiler.jar -Dswing.defaultlaf=com.jtattoo.plaf.aero.AeroLookAndFeel
 ```
 
 ### Additional Java options
