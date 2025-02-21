@@ -5,6 +5,7 @@
 scriptpath="$(realpath "$0")"
 workdir="$(dirname "${scriptpath}")"
 jarfile="${workdir}/target/ReportCompiler.jar"
+javaopt="-Xms128M -Xmx512M -Dawt.useSystemAAFontSettings=on"
 
 test -f "${jarfile}" ||  {
     printf ">> \e[31mERROR:\e[0m Cannot find ${jarfile}\n"
@@ -16,6 +17,6 @@ test -f "${jarfile}" ||  {
 }
 
 printf ">> Launching \e[1m${jarfile}\e[0m\n"
-exec java -jar "${jarfile}"
+exec java -jar "${jarfile}" ${javaopt}
 
 exit ${?}
