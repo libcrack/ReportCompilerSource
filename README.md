@@ -1,10 +1,10 @@
 # ReportCompiler
 
-### Overview
+## Overview
 
 ReportCompiler is a Java GUI application to import vulnerabilities from tools such as Nessus, Burp Scanner, etc, create findings and manage the risks.
 
-### Compilation
+## Compilation
 
 Use ant to build the jar file and the documentation:
 
@@ -12,18 +12,19 @@ Use ant to build the jar file and the documentation:
 mvn package
 ```
 
-### Usage
+## Usage
 
 ```sh
-java -jar target/ReportCompiler.jar
+java -Xms128M -Xmx512M -jar target/ReportCompiler.jar
 ```
 
-### GTK Look & Feel
+Tune the minimum and maximum Java heap parameters at will.
+
+## GTK Look & Feel
 
 On GNU/Linux systems, the following error may appear:
 
-```sh
-$ java -jar target/ReportCompiler.jar
+```
 Exception in thread "main" java.lang.Error: Cannot load com.sun.java.swing.plaf.gtk.GTKLookAndFeel
     at javax.swing.UIManager.initializeDefaultLAF(UIManager.java:1351)
     at javax.swing.UIManager.initialize(UIManager.java:1459)
@@ -35,14 +36,13 @@ Exception in thread "main" java.lang.Error: Cannot load com.sun.java.swing.plaf.
 To fix it, just specify a different look and feel as argument to Java:
 
 ```sh
-$ java -Xms128M -Xmx512M -jar target/ReportCompiler.jar -Dswing.defaultlaf=com.jtattoo.plaf.aero.AeroLookAndFeel
+java -Xms128M -Xmx512M -jar target/ReportCompiler.jar -Dswing.defaultlaf=com.jtattoo.plaf.aero.AeroLookAndFeel
 ```
 
-### Additional Java options
+## Additional Java options
 
 Additional arguments can be passed to  Java in order to improve the ReportCompiler experience:
 
 - Use default system fonts: `-Dawt.useSystemAAFontSettings=on`
 - Initial Java heap of 128MB: `-Xms 128M`
 - Max Java heap of 512MB: `-Xmx512M`
-
